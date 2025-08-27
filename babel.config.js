@@ -5,5 +5,17 @@ module.exports = function (api) {
       ["babel-preset-expo", { jsxImportSource: "nativewind" }],
       "nativewind/babel",
     ],
+    plugins: [
+      [
+        'module-resolver',
+        {
+          root: ['./'],
+          alias: {
+            '@': './',  // 让 @ 指向项目根目录
+          },
+        },
+      ],
+    ],
+   
   };
 };
