@@ -21,23 +21,24 @@ export default function Index() {
   );
 
   return (
-    <View className='flex-1 bg-primary'>
-      <Image source={images.bg} resizeMode='cover' className='flex-1 w-full absolute' />
+      <View className='flex-1 bg-primary'>
+        <Image source={images.bg} resizeMode='cover' className='flex-1 w-full absolute' />
 
-      {latestMovieList.data && (
-        <FlatList
-          data={latestMovieList.data.results}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={3} // 三列显示
-          columnWrapperStyle={{ justifyContent: 'space-between', marginBottom: 16 }} // 控制换行间距
-          ListHeaderComponent={ListHeader} // 放置 logo、搜索框、标题
-          renderItem={({ item }) => (
-            <MoviesCard item={item} />
-          )}
-          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16 }}
-          showsVerticalScrollIndicator={false}
-        />
-      )}
-    </View>
+        {latestMovieList.data && (
+          <FlatList
+            data={latestMovieList.data.results}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={3} // 三列显示
+            columnWrapperStyle={{ justifyContent: 'space-between', marginBottom: 16 }} // 控制换行间距
+            ListHeaderComponent={ListHeader} // 放置 logo、搜索框、标题
+            renderItem={({ item }) => (
+              <MoviesCard item={item} />
+            )}
+            contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16 }}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
+      </View>
+   
   );
 }

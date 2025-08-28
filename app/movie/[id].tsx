@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const MovieDetails = () => {
   const {id} = useLocalSearchParams()
   return (
-    <View>
+    <View className='flex-1 items-center justify-center'>
       <Text>{id}</Text>
     </View>
   )
