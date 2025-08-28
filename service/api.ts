@@ -7,3 +7,9 @@ export const getPopularMovies = (query: any) =>
     url: '/discover/movie',
     query
   });
+
+export const getMovieDetails = (query: any) =>
+  requestAPI({
+    url: `/movie/${query.id}`,
+    query
+  });
