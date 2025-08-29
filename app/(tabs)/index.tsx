@@ -32,6 +32,7 @@ export default function Index() {
   const handleScrollListLoad = () => {
     // 滚动加载列表
     if (!loading) setPage((p) => p + 1);
+    console.log('滚动加载列表')
   };
   const setShowDemoIcon = useScrollStore((s) => s.setShowDemoIcon);
   const handleScrollList = (e: any) => {
@@ -76,7 +77,7 @@ export default function Index() {
           showsVerticalScrollIndicator={false}
           onScroll={(e) => handleScrollList(e)}
           onEndReached={() =>
-            handleScrollListLoad
+            handleScrollListLoad()
           }
           onEndReachedThreshold={0.1}
         />
