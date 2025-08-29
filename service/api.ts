@@ -13,3 +13,9 @@ export const getMovieDetails = (query: any) =>
     url: `/movie/${query.id}`,
     query
   });
+
+export const getSearchMovies = (query: any) =>
+  requestAPI({
+    url: `/search/movie`,
+    query
+  });
