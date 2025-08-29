@@ -1,6 +1,7 @@
 import MoviesCard from '@/components/moviesCard';
 import { icons } from '@/constans/icons';
 import { images } from '@/constans/image';
+import { useScrollStore } from '@/store/scrollStore';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { FlatList, Image, Text, View } from 'react-native';
@@ -28,10 +29,19 @@ export default function Index() {
     fetchMovies(page);
   }, [page]);
 
-  const handleScrollList = () => {
+  const handleScrollListLoad = () => {
     // 滚动加载列表
     if (!loading) setPage((p) => p + 1);
   };
+  const setShowDemoIcon = useScrollStore((s) => s.setShowDemoIcon);
+  const handleScrollList = (e: any) => {
+    const y = e.nativeEvent.contentOffset.y;
+    if (y > 50) {
+      setShowDemoIcon(true);
+    } else {
+      setShowDemoIcon(false);
+    }
+  }
 
   // FlatList 的头部组件
   const ListHeader = () => (
@@ -58,8 +68,9 @@ export default function Index() {
           )}
           contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16 }}
           showsVerticalScrollIndicator={false}
+          onScroll={(e) => handleScrollList(e)}
           onEndReached={() =>
-            handleScrollList
+            handleScrollListLoad
           }
           onEndReachedThreshold={0.1}
         />

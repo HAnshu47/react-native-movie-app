@@ -1,12 +1,13 @@
-
 import { icons } from '@/constans/icons';
 import { images } from '@/constans/image';
+import { useScrollStore } from '@/store/scrollStore';
 import { Tabs } from 'expo-router';
 import { Image, ImageBackground, Text, View } from 'react-native';
 
 export default function TabsScreen() {
+  const showDemoIcon = useScrollStore((s) => s.showDemoIcon);
 
-  const tableIcon = ({ focused, title, icon }: any) => {
+  const TableIcon = ({ focused, title, icon }: { focused: boolean; title: string; icon: any }) => {
     if (focused) {
       return (
         <ImageBackground
@@ -39,45 +40,58 @@ export default function TabsScreen() {
   return (
     <Tabs screenOptions={{
       headerShown: false, tabBarShowLabel: false,
-      tabBarStyle: {
-        backgroundColor: '#0f0d23',
-        borderRadius: 50,
-        marginHorizontal: 20,
-        marginBottom: 20,
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        overflow: 'hidden',
-        borderWidth: 1,
-        borderColor: '#0f0d23',
-      },
-      tabBarItemStyle: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 10,
+        tabBarStyle: {
+          backgroundColor: '#0f0d23',
+          borderRadius: 50,
+          marginHorizontal: 20,
+          marginBottom: 20,
+          height: 50,
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+          overflow: 'hidden',
+          borderWidth: 1,
+          borderColor: '#0f0d23',
+        },
+        tabBarItemStyle: {
+          width: '100%',
+          height: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 10,
       }
-    }}
+      }}
 
     >
       <Tabs.Screen name="index" options={{
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          tableIcon({ focused, title: 'home', icon: icons.home })
-        ),
-      }}
-
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TableIcon focused={focused} icon={showDemoIcon ? icons.top : icons.home} title={showDemoIcon ? 'Top' : "home"} />
+          ),
+        }}
       />
-      <Tabs.Screen name="search" options={{
-        headerShown: false,
-        tabBarIcon: ({ focused }) => (
-          tableIcon({ focused, icon: icons.search, title: 'search' })
-        ),
-      }} />
-      <Tabs.Screen name="save" options={{ headerShown: false, tabBarIcon: ({ focused }) => tableIcon({ focused, icon: icons.save, title: 'save' }) }} />
-      <Tabs.Screen name="profile" options={{ headerShown: false, tabBarIcon: ({ focused }) => tableIcon({ focused, icon: icons.person, title: 'profile' }) }} />
+
+      <Tabs.Screen
+        name="search"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => <TableIcon focused={focused} icon={icons.search} title="search" />,
+        }}
+      />
+      <Tabs.Screen
+        name="save"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => <TableIcon focused={focused} icon={icons.save} title="save" />,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => <TableIcon focused={focused} icon={icons.person} title="profile" />,
+        }}
+      />
     </Tabs>
   );
 }
