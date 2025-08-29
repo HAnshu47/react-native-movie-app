@@ -3,7 +3,7 @@ import { icons } from '@/constans/icons';
 import { images } from '@/constans/image';
 import { useScrollStore } from '@/store/scrollStore';
 import { useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FlatList, Image, Text, View } from 'react-native';
 import SearchBar from '../../components/searchBar';
 import { getPopularMovies } from '../../service/api';
@@ -42,6 +42,11 @@ export default function Index() {
       setShowDemoIcon(false);
     }
   }
+  const flatListRef = useRef<FlatList>(null);
+  const setFlatListRef = useScrollStore((s) => s.setFlatListRef);
+  useEffect(() => {
+    setFlatListRef(flatListRef); // 把 ref 存到全局
+  }, [setFlatListRef, flatListRef]);
 
   // FlatList 的头部组件
   const ListHeader = () => (
@@ -58,6 +63,7 @@ export default function Index() {
 
       {movies && (
         <FlatList
+          ref={flatListRef}
           data={movies}
           keyExtractor={(item) => item.id.toString()}
           numColumns={3} // 三列显示
