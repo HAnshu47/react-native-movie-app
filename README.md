@@ -20,7 +20,7 @@ Tailwind CSS (NativeWind)
 React Navigation / Expo Router
  – 应用路由与导航
 
-FETCH
+Fetch
  – 请求第三方电影数据 API
 
 Zustand
@@ -39,7 +39,8 @@ Zustand
 💾 收藏页面（待完善，计划用于保存用户喜欢的电影）
 
 
-### 📂 项目结构
+###  📂 项目结构
+```
 ├── app/                # 页面文件（expo-router）
 ├── (tabs)/             # Tab 页面
 │   ├── (_layout.tsx)   # Tab 页面布局
@@ -56,19 +57,26 @@ Zustand
 ├── package.json
 ├── tsconfig.json
 └── README.md
+```
 
 ###  ⚡ 快速开始
 1. 克隆项目
+```
 git clone https://gitee.com/huangrui47/react-native-movie.git
 cd react-native-movie
+```
 
 2. 安装依赖
+```
 npm install
 # 或者
-yarn install
+yarn install 
+```
 
 3. 启动项目
-npx expo start
+```
+npx expo start 
+```
 
 ### 🔗项目依赖
 [接口数据](https://www.themoviedb.org/settings/api)
