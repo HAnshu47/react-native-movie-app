@@ -85,6 +85,11 @@ export default function Index() {
             handleScrollListLoad()
           }
           onEndReachedThreshold={0.1}
+          ListEmptyComponent={() => (
+            <Text className='text-white text-lg font-bold my-4 size-18 w-full px-4 text-center'>
+              No results found
+            </Text>
+          )}
         />
       )}
     </View>
