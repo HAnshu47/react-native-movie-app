@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+### 🎬 Movie Demo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+一个使用 React Native + Expo + TypeScript + Tailwind CSS 开发的电影类 Demo 应用。
+应用包含电影排行榜、详情页、搜索页等功能，同时预留了个人中心和收藏页面。
 
-## Get started
+### 🚀 技术栈
 
-1. Install dependencies
+React Native
+ – 跨平台移动应用开发框架
 
-   ```bash
-   npm install
-   ```
+Expo(V53)
+ – React Native 工具链，支持快速开发和部署
 
-2. Start the app
+TypeScript
+ – 提供类型支持，提升代码可维护性
 
-   ```bash
-   npx expo start
-   ```
+Tailwind CSS (NativeWind)
+ – 快速构建 UI 样式
 
-In the output, you'll find options to open the app in a
+React Navigation / Expo Router
+ – 应用路由与导航
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+FETCH
+ – 请求第三方电影数据 API
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Zustand
+ – 状态管理
 
-## Get a fresh project
+### 📱 功能特性
 
-When you're ready, run:
+🎥 排行榜页：展示热门/最新电影
 
-```bash
-npm run reset-project
-```
+🔍 搜索页：支持关键字搜索电影
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+📖 详情页：查看电影详情、简介、评分等信息
 
-## Learn more
+👤 个人中心（待完善）
 
-To learn more about developing your project with Expo, look at the following resources:
+💾 收藏页面（待完善，计划用于保存用户喜欢的电影）
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
+### 📂 项目结构
+├── app/                # 页面文件（expo-router）
+├── (tabs)/             # Tab 页面
+│   ├── (_layout.tsx)   # Tab 页面布局
+│   ├── index.tsx       # 排行榜页
+│   ├── search.tsx      # 搜索页
+│   ├── save.tsx        # 收藏页（待开发）
+│   ├── profile.tsx     # 个人中心（待开发）
+├── movie/              # 模块化电影数据
+│   ├── [id].tsx        # 详情页               # 电影数据接口
+├── components/         # 公共组件（电影卡片、搜索框等）
+├── constants/          # 静态资源、图标、图片等
+├── store/              # 状态管理（Zustand）
+├── utils/              # 工具函数
+├── package.json
+├── tsconfig.json
+└── README.md
 
-Join our community of developers creating universal apps.
+###  ⚡ 快速开始
+1. 克隆项目
+git clone https://gitee.com/huangrui47/react-native-movie.git
+cd react-native-movie
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+2. 安装依赖
+npm install
+# 或者
+yarn install
+
+3. 启动项目
+npx expo start
+
+### 🔗项目依赖
+[接口数据](https://www.themoviedb.org/settings/api)
+
+[YouTube教学视频]( https://www.youtube.com/watch?v=BTfcnxXevm0)
+
+[原作者GitHub仓库]( https://github.com/adrianhajdin/react-native-movie-app)
+
+### 🖼️页面截图
+![排行榜](assets/screenshot/index_rank.png)
+![详情页](assets/screenshot/details.png)
+![搜索页_默认](assets/screenshot/search_1.png)
+![搜索页_搜索](assets/screenshot/search_2.png)
